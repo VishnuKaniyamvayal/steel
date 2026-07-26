@@ -91,11 +91,6 @@ function Request({
 			<span className="min-w-0 flex-1 truncate text-left font-medium">
 				{name}
 			</span>
-			{path ? (
-				<span className="hidden max-w-[40%] truncate text-xs text-muted-foreground sm:block">
-					{path}
-				</span>
-			) : null}
 		</button>
 	);
 }
