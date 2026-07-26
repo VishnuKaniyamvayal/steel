@@ -1,9 +1,7 @@
-import LOGO from "@/assets/logo.png"
-
 const SteelLogo = () => {
     return (
             <div>
-                <img src={LOGO} alt="" width={"40px"} />
+                <p className="p-2 text-black bg-primary rounded px-5 font-extrabold tracking-widest">STEEL <span className="text-2xl">*</span></p>
             </div>
     )
 }
