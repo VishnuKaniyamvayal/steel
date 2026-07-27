@@ -13,6 +13,7 @@ const typographyVariants = cva("text-foreground", {
 			h5: "scroll-m-20 text-lg font-semibold tracking-tight",
 			h6: "scroll-m-20 text-base font-semibold tracking-tight",
 			p: "text-base leading-7",
+			span: "text-xs",
 		},
 	},
 	defaultVariants: {
@@ -28,6 +29,7 @@ const elementBySize = {
 	h5: "h5",
 	h6: "h6",
 	p: "p",
+	span: "span",
 } as const;
 
 type TypographySize = keyof typeof elementBySize;

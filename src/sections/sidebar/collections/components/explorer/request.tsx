@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import type { ButtonHTMLAttributes, CSSProperties } from "react";
-
+import { Typography } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 
 const requestMethods = [
@@ -33,15 +33,15 @@ const requestLineVariants = cva(
 );
 
 const requestMethodStyles = {
-	CONNECT: "bg-zinc-500/10 text-zinc-600 dark:text-zinc-300",
-	DELETE: "bg-red-500/10 text-red-600 dark:text-red-400",
-	GET: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-	HEAD: "bg-slate-500/10 text-slate-600 dark:text-slate-300",
-	OPTIONS: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400",
-	PATCH: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
-	POST: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
-	PUT: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
-	TRACE: "bg-stone-500/10 text-stone-600 dark:text-stone-300",
+	CONNECT: " text-sky-600 dark:text-sky-300",
+	DELETE: " text-red-600 dark:text-red-400",
+	GET: " text-emerald-600 dark:text-emerald-400",
+	HEAD: " text-fuchcia-600 dark:text-fuchcia-300",
+	OPTIONS: " text-indigo-600 dark:text-indigo-400",
+	PATCH: " text-amber-600 dark:text-amber-400",
+	POST: " text-blue-600 dark:text-blue-400",
+	PUT: " text-violet-600 dark:text-violet-400",
+	TRACE: " text-lime-600 dark:text-lime-300",
 } satisfies Record<RequestMethod, string>;
 
 type RequestProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> &
@@ -82,15 +82,18 @@ function Request({
 		>
 			<span
 				className={cn(
-					"inline-flex h-5 w-14 shrink-0 items-center justify-center rounded px-1.5 font-mono text-[10px] font-semibold leading-none",
+					"inline-flex shrink-0 items-center justify-center rounded px-1.5 font-mono text-[10px] font-semibold leading-none",
 					requestMethodStyles[method],
 				)}
 			>
 				{method}
 			</span>
-			<span className="min-w-0 flex-1 truncate text-left font-medium">
+			<Typography
+				size={"span"}
+				className="text-muted-foreground min-w-0 flex-1 truncate text-left "
+			>
 				{name}
-			</span>
+			</Typography>
 		</button>
 	);
 }
@@ -108,7 +111,7 @@ function Get(props: MethodRequestProps) {
 }
 
 function Head(props: MethodRequestProps) {
-	return <Request method="HEAD" {...props} />;
+	return <Request className="text" method="HEAD" {...props} />;
 }
 
 function Options(props: MethodRequestProps) {
