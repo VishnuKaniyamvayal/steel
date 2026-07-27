@@ -1,8 +1,13 @@
+import { HandMetal } from "lucide-react";
+
 const SteelLogo = () => {
 	return (
-		<div>
-			<p className="p-2 text-black bg-primary rounded px-5 font-extrabold tracking-widest">
-				STEEL <span className="text-2xl">*</span>
+		<div className="flex gap-2 items-center">
+			<div className="bg-primary rounded-full p-1">
+				<HandMetal size={17} className="rotate-45"/>
+			</div >
+			<p className="text-black rounded-full bg-primary px-3 font-bold tracking-widest">
+				STEEL
 			</p>
 		</div>
 	);
