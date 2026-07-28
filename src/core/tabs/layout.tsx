@@ -25,7 +25,7 @@ export function TabLayout() {
 				onValueChange={(value) => setActiveTab(value as string)}
 			>
 				<ScrollArea className="">
-					<TabsList variant="default" className={"bg-transparent  rounded-none p-0 gap-1 my-2"}>
+					<TabsList variant="default" className={"bg-transparent gap-1 my-2"}>
 						{openTabs.map((tab) => {
 							return (
 								<TabStrip

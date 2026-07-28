@@ -31,7 +31,7 @@ export function TabStrip({
                 size={"lg"}
 				className={cn(
 					"flex items-center gap-2 justify-between bg-background border rounded-lg px-2 py-2",
-					active ? "bg-muted border-b-primary border-b-2" : "bg-accent",
+					active ? "bg-muted border-b-primary border-b-2" : "",
 				)}
 			>
 				<div className="flex items-center gap-2">
