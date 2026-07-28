@@ -1,3 +1,1 @@
-export function TabBadges(){
-    
-}
+export function TabBadges() {}

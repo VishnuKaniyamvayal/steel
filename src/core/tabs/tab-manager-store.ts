@@ -11,7 +11,7 @@ interface TabState {
 	openTabs: TabInstance[];
 
 	setActiveTab: (instanceId: string) => void;
-	openTab: (tabType: string, name:string) => void;
+	openTab: (tabType: string, name: string) => void;
 	closeTab: (instanceId: string) => void;
 }
 
@@ -23,7 +23,7 @@ export const useTabStore = create<TabState>((set) => ({
 
 	setActiveTab: (instanceId) => set({ activeTabId: instanceId }),
 
-	openTab: (tabType,name) => {
+	openTab: (tabType, name) => {
 		const newTab: TabInstance = {
 			instanceId: generateId(),
 			name: name,
