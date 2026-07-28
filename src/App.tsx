@@ -5,6 +5,7 @@ import {
 } from "@/components/ui/resizable";
 import { Sidebar } from "@/sections";
 import { TabLayout } from "./core/tabs/layout";
+import { Header } from "./sections/header";
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 				</ResizablePanel>
 				<ResizableHandle withHandle />
 				<ResizablePanel defaultSize="75%">
+					<Header />
 					<TabLayout />
 				</ResizablePanel>
 			</ResizablePanelGroup>

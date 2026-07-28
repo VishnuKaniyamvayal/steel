@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 export interface TabInstance {
 	instanceId: string;
+	name: string;
 	type: string;
 }
 
@@ -10,7 +11,7 @@ interface TabState {
 	openTabs: TabInstance[];
 
 	setActiveTab: (instanceId: string) => void;
-	openTab: (tabType: string) => void;
+	openTab: (tabType: string, name:string) => void;
 	closeTab: (instanceId: string) => void;
 }
 
@@ -22,9 +23,10 @@ export const useTabStore = create<TabState>((set) => ({
 
 	setActiveTab: (instanceId) => set({ activeTabId: instanceId }),
 
-	openTab: (tabType) => {
+	openTab: (tabType,name) => {
 		const newTab: TabInstance = {
 			instanceId: generateId(),
+			name: name,
 			type: tabType,
 		};
 
