@@ -11,6 +11,7 @@ export type TabStripProps = {
 	name: string;
 	badge: TabBadgeType;
 	active?: boolean;
+	draft?: boolean;
 	onCloseClick?: () => void;
 	onTabClick?: () => void;
 };
@@ -22,6 +23,7 @@ export function TabStrip({
 	badge,
 	active,
 	onTabClick,
+	draft
 }: TabStripProps) {
 	return (
 		<TabsTrigger onClick={onTabClick} className={""} value={id}>
@@ -43,18 +45,29 @@ export function TabStrip({
 						{name}
 					</Typography>
 				</div>
-				<Button
-					onClick={(e) => {
-						e.stopPropagation();
-						onCloseClick?.();
-					}}
-					size={"icon-xs"}
-					variant={"ghost"}
-				>
-					{""}
-					<X />
-					{""}
-				</Button>
+				{
+					draft ?
+						<Button
+							onClick={(e) => {
+								e.stopPropagation();
+								onCloseClick?.();
+							}}
+							variant={"ghost"} className={"group relative"}>
+							<span className="h-2 w-2 rounded-full bg-primary transition-opacity group-hover:opacity-0" />
+							<X size={10} className=" absolute h-3! w-3! opacity-0 transition-opacity group-hover:opacity-100" />
+						</Button>
+						:
+						<Button
+							onClick={(e) => {
+								e.stopPropagation();
+								onCloseClick?.();
+							}}
+							size={"icon-xs"}
+							variant={"ghost"}
+						>
+							<X />
+						</Button>
+				}
 			</Button>
 		</TabsTrigger>
 	);

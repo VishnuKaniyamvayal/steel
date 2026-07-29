@@ -35,6 +35,7 @@ export function TabLayout() {
 									active={activeTabId === tab.instanceId}
 									id={tab.instanceId}
 									name={tab.name}
+									draft={true}
 									badge={tab.badge}
 									key={tab.instanceId}
 									onCloseClick={() => {
