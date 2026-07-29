@@ -1,8 +1,10 @@
 import { Layers } from "lucide-react";
 import { Typography } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
-import { type RequestMethod } from "@/sections/sidebar/collections/components/explorer/request";
-import { requestMethodStyles } from "@/sections/sidebar/collections/components/explorer/request";
+import {
+	type RequestMethod,
+	requestMethodStyles,
+} from "@/sections/sidebar/collections/components/explorer/request";
 import type { TabBadge as TabBadgeType } from "@/types/tabBadgeTypes";
 
 interface RequestBadgeProps {

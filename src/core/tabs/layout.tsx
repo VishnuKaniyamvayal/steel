@@ -15,7 +15,10 @@ export function TabLayout() {
 		<div className="p-3">
 			<Button
 				onClick={() => {
-					test({ badgeType: "REQUEST", method:"GET" }, "req");
+					test(
+						{ badgeType: "REQUEST", method: "GET" },
+						"Create Users with the help of api keys",
+					);
 				}}
 			>
 				aasd

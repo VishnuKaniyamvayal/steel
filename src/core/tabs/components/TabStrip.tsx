@@ -24,7 +24,7 @@ export function TabStrip({
 	onTabClick,
 }: TabStripProps) {
 	return (
-		<TabsTrigger onClick={onTabClick} className={"w-50"} value={id}>
+		<TabsTrigger onClick={onTabClick} className={""} value={id}>
 			<Button
 				onClick={onTabClick}
 				variant={"outline"}
@@ -36,7 +36,10 @@ export function TabStrip({
 			>
 				<div className="flex items-center gap-2">
 					<TabBadge {...badge} />
-					<Typography className="cursor-default" size={"span"}>
+					<Typography
+						className=" max-w-30 truncate cursor-default"
+						size={"span"}
+					>
 						{name}
 					</Typography>
 				</div>
@@ -49,7 +52,8 @@ export function TabStrip({
 					variant={"ghost"}
 				>
 					{""}
-					<X />{""}
+					<X />
+					{""}
 				</Button>
 			</Button>
 		</TabsTrigger>
