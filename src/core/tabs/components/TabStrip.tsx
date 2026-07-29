@@ -23,52 +23,57 @@ export function TabStrip({
 	badge,
 	active,
 	onTabClick,
-	draft
+	draft,
 }: TabStripProps) {
 	return (
-		<TabsTrigger onClick={onTabClick} className={""} value={id}>
-			<Button
+		<div
+			className={cn(
+				"flex h-9 w-68 shrink-0 items-center rounded-lg border bg-background transition-colors hover:bg-muted",
+				active ? "border-b-2 border-b-primary bg-muted" : "",
+			)}
+		>
+			<TabsTrigger
 				onClick={onTabClick}
-				variant={"outline"}
-				size={"lg"}
 				className={cn(
-					"flex w-full items-center gap-2 justify-between bg-background border rounded-lg px-2 py-2",
-					active ? "bg-muted border-b-primary border-b-2" : "",
+					"h-full min-w-0 flex-1 justify-start gap-2 rounded-lg border-transparent! bg-transparent px-2 py-0 text-foreground hover:bg-transparent data-active:bg-transparent dark:data-active:bg-transparent after:hidden",
 				)}
+				value={id}
 			>
-				<div className="flex items-center gap-2">
+				<div className="flex min-w-0 items-center gap-2">
 					<TabBadge {...badge} />
 					<Typography
-						className=" max-w-30 truncate cursor-default"
+						className="max-w-46 cursor-default truncate"
 						size={"span"}
 					>
 						{name}
 					</Typography>
 				</div>
-				{
-					draft ?
-						<Button
-							onClick={(e) => {
-								e.stopPropagation();
-								onCloseClick?.();
-							}}
-							variant={"ghost"} className={"group relative"}>
-							<span className="h-2 w-2 rounded-full bg-primary transition-opacity group-hover:opacity-0" />
-							<X size={10} className=" absolute h-3! w-3! opacity-0 transition-opacity group-hover:opacity-100" />
-						</Button>
-						:
-						<Button
-							onClick={(e) => {
-								e.stopPropagation();
-								onCloseClick?.();
-							}}
-							size={"icon-xs"}
-							variant={"ghost"}
-						>
-							<X />
-						</Button>
-				}
-			</Button>
-		</TabsTrigger>
+			</TabsTrigger>
+			{draft ? (
+				<Button
+					className={"group relative mr-1"}
+					onClick={(e) => {
+						e.stopPropagation();
+						onCloseClick?.();
+					}}
+					variant={"ghost"}
+				>
+					<span className="h-2 w-2 rounded-full bg-primary transition-opacity group-hover:opacity-0" />
+					<X className="absolute h-3! w-3! opacity-0 transition-opacity group-hover:opacity-100" />
+				</Button>
+			) : (
+				<Button
+					className="mr-1"
+					onClick={(e) => {
+						e.stopPropagation();
+						onCloseClick?.();
+					}}
+					size={"icon-xs"}
+					variant={"ghost"}
+				>
+					<X />
+				</Button>
+			)}
+		</div>
 	);
 }

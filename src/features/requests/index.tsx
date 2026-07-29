@@ -1,3 +1,5 @@
+import { OpenTabContent } from "@/core/tabs/components/OpenTabContent";
+
 export function Request() {
-	return <div>hello this is request</div>;
+	return <OpenTabContent id="request" />;
 }

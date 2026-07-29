@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Tabs, TabsList } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
+import { OpenTabContent } from "./components/OpenTabContent";
 import { TabStrip } from "./components/TabStrip";
 import { useTabStore } from "./tab-manager-store";
 
@@ -9,25 +10,28 @@ export function TabLayout() {
 	const openTabs = useTabStore((state) => state.openTabs);
 	const setActiveTab = useTabStore((state) => state.setActiveTab);
 	const closeTab = useTabStore((state) => state.closeTab);
-	const test = useTabStore((state) => state.openTab);
+	const openRequestTab = useTabStore((state) => state.openTab);
 
 	return (
-		<div className="p-3">
+		<div className="flex h-[calc(100vh-3.8125rem)] flex-col overflow-hidden p-3">
 			<Button
 				onClick={() => {
-					test(
+					openRequestTab(
 						{ badgeType: "REQUEST", method: "GET" },
 						"Create Users with the help of api keys",
 					);
 				}}
+				className="w-fit rounded-lg"
+				variant="outline"
 			>
-				aasd
+				New Request
 			</Button>
 			<Tabs
+				className="min-h-0 flex-1"
 				value={activeTabId}
 				onValueChange={(value) => setActiveTab(value as string)}
 			>
-				<ScrollArea className="">
+				<ScrollArea className="shrink-0">
 					<TabsList variant="default" className={"bg-transparent my-2"}>
 						{openTabs.map((tab) => {
 							return (
@@ -46,6 +50,21 @@ export function TabLayout() {
 						})}
 					</TabsList>
 				</ScrollArea>
+				{openTabs.map((tab) => (
+					<TabsContent
+						className="min-h-0 flex-1 overflow-hidden"
+						key={tab.instanceId}
+						value={tab.instanceId}
+					>
+						<OpenTabContent
+							id={tab.instanceId}
+							method={
+								tab.badge.badgeType === "REQUEST" ? tab.badge.method : undefined
+							}
+							name={tab.name}
+						/>
+					</TabsContent>
+				))}
 			</Tabs>
 		</div>
 	);
