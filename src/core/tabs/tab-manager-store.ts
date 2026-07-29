@@ -1,9 +1,10 @@
 import { create } from "zustand";
+import type { TabBadge } from "@/types/tabBadgeTypes";
 
 export interface TabInstance {
 	instanceId: string;
 	name: string;
-	type: string;
+	badge: TabBadge;
 }
 
 interface TabState {
@@ -11,7 +12,7 @@ interface TabState {
 	openTabs: TabInstance[];
 
 	setActiveTab: (instanceId: string) => void;
-	openTab: (tabType: string, name: string) => void;
+	openTab: (badge: TabBadge, name: string) => void;
 	closeTab: (instanceId: string) => void;
 }
 
@@ -23,11 +24,11 @@ export const useTabStore = create<TabState>((set) => ({
 
 	setActiveTab: (instanceId) => set({ activeTabId: instanceId }),
 
-	openTab: (tabType, name) => {
+	openTab: (badge, name) => {
 		const newTab: TabInstance = {
 			instanceId: generateId(),
 			name: name,
-			type: tabType,
+			badge,
 		};
 
 		set((state) => ({

@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { TabsTrigger } from "@/components/ui/tabs";
 import { Typography } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
+import type { TabBadge as TabBadgeType } from "@/types/tabBadgeTypes";
+import { TabBadge } from "./TabBadge";
 
 export type TabStripProps = {
 	id: string;
 	name: string;
-	type: string;
+	badge: TabBadgeType;
 	active?: boolean;
 	onCloseClick?: () => void;
 	onTabClick?: () => void;
@@ -17,27 +19,23 @@ export function TabStrip({
 	id,
 	onCloseClick,
 	name,
-	type,
+	badge,
 	active,
 	onTabClick,
 }: TabStripProps) {
 	return (
-		<TabsTrigger
-        onClick={onTabClick}
-        value={id}>
+		<TabsTrigger onClick={onTabClick} className={"w-50"} value={id}>
 			<Button
 				onClick={onTabClick}
 				variant={"outline"}
-                size={"lg"}
+				size={"lg"}
 				className={cn(
-					"flex items-center gap-2 justify-between bg-background border rounded-lg px-2 py-2",
+					"flex w-full items-center gap-2 justify-between bg-background border rounded-lg px-2 py-2",
 					active ? "bg-muted border-b-primary border-b-2" : "",
 				)}
 			>
 				<div className="flex items-center gap-2">
-					<Typography className="text-green-600" size={"span"}>
-						{type}
-					</Typography>
+					<TabBadge {...badge} />
 					<Typography className="cursor-default" size={"span"}>
 						{name}
 					</Typography>
@@ -50,8 +48,8 @@ export function TabStrip({
 					size={"icon-xs"}
 					variant={"ghost"}
 				>
-					{" "}
-					<X />{" "}
+					{""}
+					<X />{""}
 				</Button>
 			</Button>
 		</TabsTrigger>

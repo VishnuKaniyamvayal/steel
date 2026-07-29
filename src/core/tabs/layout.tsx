@@ -15,7 +15,7 @@ export function TabLayout() {
 		<div className="p-3">
 			<Button
 				onClick={() => {
-					test("req", "req");
+					test({ badgeType: "REQUEST", method:"GET" }, "req");
 				}}
 			>
 				aasd
@@ -25,14 +25,14 @@ export function TabLayout() {
 				onValueChange={(value) => setActiveTab(value as string)}
 			>
 				<ScrollArea className="">
-					<TabsList variant="default" className={"bg-transparent gap-1 my-2"}>
+					<TabsList variant="default" className={"bg-transparent my-2"}>
 						{openTabs.map((tab) => {
 							return (
 								<TabStrip
 									active={activeTabId === tab.instanceId}
 									id={tab.instanceId}
 									name={tab.name}
-									type={tab.type}
+									badge={tab.badge}
 									key={tab.instanceId}
 									onCloseClick={() => {
 										closeTab(tab.instanceId);
